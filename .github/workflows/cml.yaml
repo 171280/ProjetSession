@@ -7,12 +7,13 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       #- uses: iterative/setup-dvc@v1
-      - name: Train model
+      - name: Rechercher le modele
         env:
           REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           # Install requirements
           pip install -r requirements.txt
+          
           
           # Pull data & run-cache from S3 and reproduce pipeline
           #dvc pull --run-cache

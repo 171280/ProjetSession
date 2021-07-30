@@ -8,19 +8,9 @@
 # Copyright:   (c) rlkouanda 2021
 # Licence:     <your licence>
 #-------------------------------------------------------------------------------
-
-def main():
-    pass
-
-if __name__ == '__main__':
-    main()
 # Importation des differentes librairies
 import numpy as np
 import pandas as pd
-import seaborn as sns
-import matplotlib.pyplot as plt
-%matplotlib inline
-from sklearn.preprocessing import LabelEncoder
 
 dfClientsPerdus = pd.read_csv("BankChurners_collecte.csv")
 

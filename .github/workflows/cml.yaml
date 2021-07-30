@@ -12,7 +12,8 @@ jobs:
           REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           # Install requirements
-          pip install -r requirements.txt         
+          pip install -r requirements.txt    
+          collecte.py
           
           # Pull data & run-cache from S3 and reproduce pipeline
           #dvc pull --run-cache

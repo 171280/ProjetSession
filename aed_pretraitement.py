@@ -154,12 +154,14 @@ sns.pairplot(dfClientsPerdusNet, hue='Attrition_Flag')
 sns.pairplot(dfClientsPerdusNet, vars=['Total_Trans_Amt','Total_Trans_Ct'], hue='Attrition_Flag')
 
 # Vérifions la correlation
+print("Vérifions la correlation")
 fig = plt.subplots(figsize=(15, 10))
 matrice = dfClientsPerdusNet.corr().round(2)
 sns.heatmap(data=matrice, annot=True)
 plt.show()
 
 # Nous allons faire une pré-traitement ou une transformation de nos données
+print("Nous allons faire une pré-traitement ou une transformation de nos données")
 
 dfClientsPerdusNet['Income_Category'].value_counts()
 dfClientsPerdusNet['Attrition_Flag'].value_counts()

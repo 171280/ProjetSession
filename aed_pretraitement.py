@@ -53,3 +53,110 @@ sns.catplot(x="Education_Level", y="total",\
                 hue="Attrition_Flag",\
                 data=dfClientsPerdusNet.groupby(['Education_Level', 'Attrition_Flag'], as_index=False).agg(total=('Education_Level', 'count')), kind="bar",\
                 height=4, aspect=3.0);
+
+def with_hue(plot, feature, Number_of_categories, hue_categories):
+    a = [p.get_height() for p in plot.patches]
+    patch = [p for p in plot.patches]
+    for i in range(Number_of_categories):
+        total = feature.value_counts().values[i]
+        for j in range(hue_categories):
+            percentage = '{:.1f}%'.format(100 * a[(j*Number_of_categories + i)]/total)
+            x = patch[(j*Number_of_categories + i)].get_x() + patch[(j*Number_of_categories + i)].get_width() / 2 - 0.15
+            y = patch[(j*Number_of_categories + i)].get_y() + patch[(j*Number_of_categories + i)].get_height() 
+            ax.annotate(percentage, (x, y), size = 12)
+    #plt.show()
+
+def without_hue(plot, feature):
+    total = len(feature)
+    for p in ax.patches:
+        percentage = '{:.1f}%'.format(100 * p.get_height()/total)
+        x = p.get_x() + p.get_width() / 2 - 0.05
+        y = p.get_y() + p.get_height()
+        ax.annotate(percentage, (x, y), size = 12)
+    #plt.show()
+
+plt.figure(figsize=(15,5))
+ax=sns.countplot('Education_Level', hue='Attrition_Flag',data=dfClientsPerdusNet)
+with_hue(ax, dfClientsPerdusNet.Education_Level, 2, 7)
+
+plt.figure(figsize=(15,5))
+ax=sns.countplot('Education_Level',data=dfClientsPerdusNet)
+without_hue(ax, dfClientsPerdusNet.Education_Level)
+
+plt.figure(figsize=(15,5))
+ax=sns.countplot('Education_Level', hue='Attrition_Flag',data=dfClientsPerdusNet)
+without_hue(ax, dfClientsPerdusNet.Education_Level)
+
+# Analyse de la variable "Education_Level"
+plt.figure(figsize=(15,10))
+plt.subplot(2,1,1)
+ax=sns.countplot('Education_Level',data=dfClientsPerdusNet)
+without_hue(ax, dfClientsPerdusNet.Education_Level)
+plt.subplot(2,1,2)
+ax=sns.countplot('Education_Level', hue='Attrition_Flag',data=dfClientsPerdusNet)
+without_hue(ax, dfClientsPerdusNet.Education_Level)
+plt.show()
+
+# Analyse de la variable "Marital_Status"
+plt.figure(figsize=(15,10))
+plt.subplot(2,1,1)
+ax=sns.countplot('Marital_Status',data=dfClientsPerdusNet)
+without_hue(ax, dfClientsPerdusNet.Marital_Status)
+plt.subplot(2,1,2)
+ax=sns.countplot('Marital_Status', hue='Attrition_Flag',data=dfClientsPerdusNet)
+without_hue(ax, dfClientsPerdusNet.Marital_Status)
+plt.show()
+
+# Analyse de la variable "Income_Category"
+plt.figure(figsize=(15,10))
+plt.subplot(2,1,1)
+ax=sns.countplot('Income_Category',data=dfClientsPerdusNet)
+without_hue(ax, dfClientsPerdusNet.Income_Category)
+plt.subplot(2,1,2)
+ax=sns.countplot('Income_Category', hue='Attrition_Flag',data=dfClientsPerdusNet)
+without_hue(ax, dfClientsPerdusNet.Income_Category)
+plt.show()
+
+# Analyse de la variable "Card_Category"
+plt.figure(figsize=(15,10))
+plt.subplot(2,1,1)
+ax=sns.countplot('Card_Category',data=dfClientsPerdusNet)
+without_hue(ax, dfClientsPerdusNet.Card_Category)
+plt.subplot(2,1,2)
+ax=sns.countplot('Card_Category', hue='Attrition_Flag',data=dfClientsPerdusNet)
+without_hue(ax, dfClientsPerdusNet.Card_Category)
+plt.show()
+
+# Analyse de la variable "Gender"
+plt.figure(figsize=(15,10))
+plt.subplot(2,1,1)
+ax=sns.countplot('Gender',data=dfClientsPerdusNet)
+without_hue(ax, dfClientsPerdusNet.Gender)
+plt.subplot(2,1,2)
+ax=sns.countplot('Gender', hue='Attrition_Flag',data=dfClientsPerdusNet)
+without_hue(ax, dfClientsPerdusNet.Gender)
+plt.show()
+
+# Analyse de la variable "Attrition_Flag"
+plt.figure(figsize=(15,10))
+plt.subplot(2,1,1)
+ax=sns.countplot('Attrition_Flag',data=dfClientsPerdusNet)
+without_hue(ax, dfClientsPerdusNet.Attrition_Flag)
+plt.subplot(2,1,2)
+ax=sns.countplot('Attrition_Flag', hue='Attrition_Flag',data=dfClientsPerdusNet)
+without_hue(ax, dfClientsPerdusNet.Attrition_Flag)
+plt.show()
+
+dfClientsPerdusNet.plot(kind='box', figsize = (15,10), rot=30, showfliers=False, vert=False);
+
+sns.pairplot(dfClientsPerdusNet, hue='Attrition_Flag')
+
+sns.pairplot(dfClientsPerdusNet, vars=['Total_Trans_Amt','Total_Trans_Ct'], hue='Attrition_Flag')
+
+# Vérifions la correlation
+fig = plt.subplots(figsize=(15, 10))
+matrice = dfClientsPerdusNet.corr().round(2)
+sns.heatmap(data=matrice, annot=True)
+plt.show()
+
+# Nous allons faire une pré-traitement ou une transformation de nos données

@@ -7,7 +7,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       #- uses: iterative/setup-dvc@v1
-      - name: Rechercher le modele
+      - name: cml_run
         env:
           REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |

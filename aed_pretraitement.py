@@ -160,3 +160,27 @@ sns.heatmap(data=matrice, annot=True)
 plt.show()
 
 # Nous allons faire une pré-traitement ou une transformation de nos données
+
+dfClientsPerdusNet['Income_Category'].value_counts()
+dfClientsPerdusNet['Attrition_Flag'].value_counts()
+dfClientsPerdusNet['Marital_Status'].value_counts()
+dfClientsPerdusNet['Card_Category'].value_counts()
+dfClientsPerdusNet['Education_Level'].value_counts()
+dfClientsPerdusNet['Gender'].value_counts()
+
+dfClientsPerdusNet[list(set(dfClientsPerdusNet.columns) - set(dfClientsPerdusNet._get_numeric_data().columns))]
+
+dfClientsPerdusNet[list(set(dfClientsPerdusNet.columns) - set(dfClientsPerdusNet._get_numeric_data().columns))].loc[:,:]
+
+le=LabelEncoder()
+for i in dfClientsPerdusNet[list(set(dfClientsPerdusNet.columns) - set(dfClientsPerdusNet._get_numeric_data().columns))].loc[:,:]:
+   dfClientsPerdusNet[i]=le.fit_transform(dfClientsPerdusNet[i])
+   
+# Vérifions la correlation
+fig = plt.subplots(figsize=(15, 10))
+matrice = dfClientsPerdusNet.corr().round(2)
+sns.heatmap(data=matrice, annot=True)
+plt.show()
+
+#sauvegarder le data
+dfClientsPerdusNet.to_csv("BankChurners_aed_pretrait.csv",index=False)

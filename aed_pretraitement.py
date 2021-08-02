@@ -49,7 +49,7 @@ print("On constate que parmi les 52.9% des clients qui sont de sexe féminin, 9.
 
 dfClientsPerdusNet.groupby(['Education_Level', 'Attrition_Flag'], as_index=False).agg(total=('Education_Level', 'count')).groupby(['Education_Level', 'Attrition_Flag']).sum().plot(kind='pie', subplots=True, shadow = True,startangle=90,figsize=(15,15), autopct='%1.1f%%')
 
-sns.catplot(x="Education_Level", y="total",
-                hue="Attrition_Flag",
-                data=dfClientsPerdusNet.groupby(['Education_Level', 'Attrition_Flag'], as_index=False).agg(total=('Education_Level', 'count')), kind="bar",
+sns.catplot(x="Education_Level", y="total",\
+                hue="Attrition_Flag",\
+                data=dfClientsPerdusNet.groupby(['Education_Level', 'Attrition_Flag'], as_index=False).agg(total=('Education_Level', 'count')), kind="bar",\
                 height=4, aspect=3.0);

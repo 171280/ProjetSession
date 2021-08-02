@@ -3,7 +3,6 @@ import numpy as np
 import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
-%matplotlib inline
 from sklearn.preprocessing import LabelEncoder
 
 dfClientsPerdus = pd.read_csv("BankChurners_collecte.csv")
@@ -16,6 +15,6 @@ dfClientsPerdus.rename(columns={'Naive_Bayes_Classifier_Attrition_Flag_Card_Cate
 
 dfClientsPerdus.info()
 
-#print("Avant de commencer l'analyse exploratoire, nous allons supprimer certains prédicteurs.")
-#print("1- Le prédicteur CLIENTNUM sera supprimé car il est le numéro unique de chaque client")
-#print("2- Les prédicteurs NB_mon_1 et NB_mon_2 seront supprimés")
+print("Avant de commencer l'analyse exploratoire, nous allons supprimer certains prédicteurs.")
+print("1- Le prédicteur CLIENTNUM sera supprimé car il est le numéro unique de chaque client")
+print("2- Les prédicteurs NB_mon_1 et NB_mon_2 seront supprimés")

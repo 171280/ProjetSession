@@ -118,6 +118,7 @@ metrics.plot_confusion_matrix(logreg, x_test, y_test, display_labels=cn, cmap=pl
 # Enregistrer le modèle
 pickle.dump(model, open('model.pkl', 'wb'))
 
+# modele
 os.makedirs(model_dir, exist_ok=True)
 model_path = os.path.join(model_dir, "model.joblib")
 

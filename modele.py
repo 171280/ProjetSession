@@ -121,7 +121,7 @@ pickle.dump(model, open('model.pkl', 'wb'))
 #os.makedirs(model_dir, exist_ok=True)
 os.makedirs("C:\model_dir")
 #model_path = os.path.join(model_dir, "model.joblib")
-model_path = os.path.join("C:\model_dir\", "model.joblib")
+model_path = os.path.join("C:\model_dir", "model.joblib")
 joblib.dump(model, model_path)
 #joblib.dump(model, "model.joblib")
 

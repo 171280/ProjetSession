@@ -45,7 +45,7 @@ print("On constate qu'il existe 52.9% des clients qui sont de sexe féminin cont
 dfClientsPerdusNet.groupby(['Gender', 'Attrition_Flag'], as_index=False).agg(total=('Gender', 'count')).groupby(['Gender', 'Attrition_Flag']).sum().plot(kind='pie', subplots=True, shadow = True,startangle=90,\
 figsize=(10,10), autopct='%1.1f%%')
 
-print("On constate que parmi les 52.9% des clients qui sont de sexe féminin, 9.2% se désabonnent contre 43.7% qui continuent d'être clients. Aussi, sur les 47.1% de clients qui sont de sexe masculin, 6.9% de clients se désabonnent contre 40.2% qui continuent d'être des clients."
+print("On constate que parmi les 52.9% des clients qui sont de sexe féminin, 9.2% se désabonnent contre 43.7% qui continuent d'être clients. Aussi, sur les 47.1% de clients qui sont de sexe masculin, 6.9% de clients se désabonnent contre 40.2% qui continuent d'être des clients.")
 
 dfClientsPerdusNet.groupby(['Education_Level', 'Attrition_Flag'], as_index=False).agg(total=('Education_Level', 'count')).groupby(['Education_Level', 'Attrition_Flag']).sum().plot(kind='pie', subplots=True, shadow = True,startangle=90,figsize=(15,15), autopct='%1.1f%%')
 

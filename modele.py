@@ -119,9 +119,9 @@ metrics.plot_confusion_matrix(logreg, x_test, y_test, display_labels=cn, cmap=pl
 pickle.dump(model, open('model.pkl', 'wb'))
 
 #os.makedirs(model_dir, exist_ok=True)
-os.makedirs("F:\model_dir")
+os.makedirs("F:/model_dir")
 #model_path = os.path.join(model_dir, "model.joblib")
-model_path = os.path.join("F:\model_dir", "model.joblib")
+model_path = os.path.join("F:/model_dir", "model.joblib")
 joblib.dump(model, model_path)
 #joblib.dump(model, "model.joblib")
 

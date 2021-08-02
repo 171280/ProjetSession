@@ -3,6 +3,5 @@ pandas
 seaborn
 matplotlib
 sklearn
-os
 joblib
 json

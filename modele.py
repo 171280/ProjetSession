@@ -11,6 +11,9 @@ from sklearn import neighbors, metrics
 from sklearn.naive_bayes import GaussianNB
 from sklearn.linear_model import LogisticRegression
 import pickle
+import os
+import joblib
+import json
 
 print("Nous allons developper des modèles")
 print("Nous allons diviser les données en deux parties. Une partie pour l'entrainement et l'autre partie pour le test.")
@@ -114,4 +117,9 @@ metrics.plot_confusion_matrix(logreg, x_test, y_test, display_labels=cn, cmap=pl
 
 # Enregistrer le modèle
 pickle.dump(model, open('model.pkl', 'wb'))
+
+os.makedirs(model_dir, exist_ok=True)
+model_path = os.path.join(model_dir, "model.joblib")
+
+joblib.dump(model, model_path)
 

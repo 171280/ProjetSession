@@ -41,3 +41,77 @@ print(x_train.shape, y_train.shape)
 print(x_test.shape, y_test.shape)
 
 print("Model: Arbre de décision")
+
+model = DecisionTreeClassifier(max_depth = 13, random_state = 1)
+model.fit(x_train, y_train)
+
+prediction = model.predict(x_test)
+print("La précision de l'arbre est de: ", "{:.3f}".format(metrics.accuracy_score(prediction, y_test)))
+
+# confusion matrix
+cf = metrics.confusion_matrix(y_test, prediction)
+pd.DataFrame(cf, columns=['pred neg','pred pos'], index=['actual neg','actual pos'])
+
+metrics.plot_confusion_matrix(model, x_test, y_test, display_labels=cn, cmap=plt.cm.Blues, normalize=None)
+
+print('True Positive Rate/Recall = TP/(TP+FN) :', cf[1][1] / (cf[1][1] + cf[1][0])) 
+print('False Positive Rate = FP/(FP+TN) :', cf[0][1] / (cf[0][1] + cf[0][0]))
+print('Accuracy = (TP+TN)/total :', (cf[1][1]+cf[0][0])/(cf[1][1]+cf[0][0]+cf[0][1]+cf[1][0]))
+print('Precision = TP/(TP+FP) :',  (cf[1][1]/(cf[1][1]+cf[0][1])))
+
+# Model: Le plus proche voisin KNN
+print("Model: Le plus proche voisin KNN")
+
+# Créer l'objet Neighbours Classifier
+# On considère KNN avec pondération uniforme
+weights = 'uniform'
+clf = neighbors.KNeighborsClassifier(weights = weights)
+# Faire apprendre le model en utilisant les données d'entraînement
+clf.fit(x_train, y_train)
+# Prédire la classe pour toutes les observations dans les données d'entraînement
+z = clf.predict(x_train)
+print(z.shape)
+# Comparer les classe prédictes avec les vrais labels de la classe
+accuracy = clf.score(x_train, y_train)
+print(f"La précision du model avec les données d'entraînement est de {accuracy}")
+
+# Prédire la classe pour toutes les observations dans les données de test
+z = clf.predict(x_test)
+print(z.shape)
+# Comparer les classe prédictes avec les vrais labels de la classe
+accuracy = clf.score(x_test, y_test)
+print(f"La précision du model avec les données de tests est de {accuracy}")
+
+metrics.plot_confusion_matrix(clf, x_test, y_test, display_labels=cn, cmap=plt.cm.Blues, normalize=None)
+
+## Naive Bayes
+#Create a Gaussian Classifier
+gnb = GaussianNB()
+
+#Train the model using the training sets
+gnb.fit(x_train, y_train)
+#Predict the response for test dataset
+y_pred = gnb.predict(x_test)
+
+# Model Accuracy, how often is the classifier correct?
+print("Accuracy:",metrics.accuracy_score(y_test, y_pred))
+
+metrics.plot_confusion_matrix(gnb, x_test, y_test, display_labels=cn, cmap=plt.cm.Blues, normalize=None)
+
+# Regression Logistique
+# set the model
+logreg = LogisticRegression(C=3792.690190732246, penalty='l1', solver='liblinear')
+# fit model
+logreg.fit(x_train, y_train)
+
+#Predict the response for test dataset
+y_pred = logreg.predict(x_test)
+
+# Model Accuracy, how often is the classifier correct?
+print("Accuracy:",metrics.accuracy_score(y_test, y_pred))
+
+metrics.plot_confusion_matrix(logreg, x_test, y_test, display_labels=cn, cmap=plt.cm.Blues, normalize=None)
+
+# Enregistrer le modèle
+pickle.dump(model, open('model.pkl', 'wb'))
+

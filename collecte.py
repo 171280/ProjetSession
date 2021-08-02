@@ -2,19 +2,23 @@
 import numpy as np
 import pandas as pd
 import seaborn as sns
-import matplotlib.pyplot as plt
-from sklearn.preprocessing import LabelEncoder
 
-dfClientsPerdus = pd.read_csv("BankChurners_collecte.csv")
+# Nous allons lire les données du fichier csv et les importer dans notre dataframe qui s'appelle dfClientsPerdus.
+dfClientsPerdus = pd.read_csv("BankChurners.csv")
 
-# Pour commencer, nous allons modiifer le nom des deux dernièrs prédicteurs car ils sont trop longs.
-dfClientsPerdus.rename(columns={'Naive_Bayes_Classifier_Attrition_Flag_Card_Category_Contacts_Count_12_mon_Dependent_count_Education_Level_Months_Inactive_12_mon_1' :\
-                                'NB_mon_1'}, inplace=True)
-dfClientsPerdus.rename(columns={'Naive_Bayes_Classifier_Attrition_Flag_Card_Category_Contacts_Count_12_mon_Dependent_count_Education_Level_Months_Inactive_12_mon_2' :\
-                                'NB_mon_2'}, inplace=True)
+# Nous allons chercher le nombre de descripteurs et d'individus de notre dataframe
+print(f"Le nombre d'individus est de: {dfClientsPerdus.shape[0]}")
+print(f"Le nombre de prédicteurs est de: {dfClientsPerdus.shape[1]}")
+print("Notre dataframe contient 10127 individus et 23 prédicteurs")
 
+# Nous allons faire une description de nos descripteurs
 dfClientsPerdus.info()
+dfClientsPerdus.describe()
+dfClientsPerdus.describe(include='O')
 
-print("Avant de commencer l'analyse exploratoire, nous allons supprimer certains prédicteurs.")
-print("1- Le prédicteur CLIENTNUM sera supprimé car il est le numéro unique de chaque client")
-print("2- Les prédicteurs NB_mon_1 et NB_mon_2 seront supprimés")
+print("Nous avons 23 prédicteurs")
+print("Nous avons 17 prédicteurs qui sont des variables quantitatives")
+print("Nous avons 06 prédicteurs qui sont des variables qualitatives")
+
+#sauvegarder le data
+dfClientsPerdus.to_csv("BankChurners_collecte.csv",index=False)

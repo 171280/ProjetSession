@@ -7,7 +7,7 @@ from sklearn.preprocessing import LabelEncoder
 from sklearn.model_selection import train_test_split
 from sklearn import metrics
 from sklearn.tree import DecisionTreeClassifier, plot_tree
-from   sklearn import neighbors, metrics
+from sklearn import neighbors, metrics
 from sklearn.naive_bayes import GaussianNB
 from sklearn.linear_model import LogisticRegression
 import pickle
@@ -80,7 +80,7 @@ z = clf.predict(x_test)
 print(z.shape)
 # Comparer les classe prédictes avec les vrais labels de la classe
 accuracy = clf.score(x_test, y_test)
-print(f"La précision du model avec les données de tests est de {accuracy}")
+print(f"La précision du modèle avec les données de tests est de {accuracy}")
 
 metrics.plot_confusion_matrix(clf, x_test, y_test, display_labels=cn, cmap=plt.cm.Blues, normalize=None)
 

@@ -125,3 +125,8 @@ model_path = os.path.join("F:\\model_dir", "model.joblib")
 joblib.dump(model, model_path)
 #joblib.dump(model, "model.joblib")
 
+# Ajouter
+#Information sur le répertoire courant
+print ("Repertoire courant:",os.getcwd())
+os.chdir("C:\\temp")
+print("Repertoire absolu:",os.path.abspath('.'))

@@ -128,5 +128,6 @@ joblib.dump(model, model_path)
 # Ajouter
 #Information sur le répertoire courant
 print ("Repertoire courant:",os.getcwd())
-os.chdir("C:\\temp")
-print("Repertoire absolu:",os.path.abspath('.'))
+os.chdir(os.getcwd())
+joblib.dump(model, os.getcwd())
+print("Listing des repertoires:",os.listdir(os.getcwd()))

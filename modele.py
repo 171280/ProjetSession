@@ -124,6 +124,8 @@ model_path = os.path.join("model_dir", "model.joblib")
 joblib.dump(model, model_path)
 #
 print("Listing des repertoires:",os.listdir(os.getcwd()))
+os.chdir(os.path.join(os.sep,os.getcwd(),'model_dir'))
+print("Listing des repertoires:",os.listdir(os.getcwd()))
 
 # Ajouter
 #Information sur le répertoire courant

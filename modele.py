@@ -123,7 +123,8 @@ model_path = os.path.join("model_dir", "model.joblib")
 #joblib.dump(model, model_path)
 pickle.dump(model, open('model.pkl', 'wb'))
 print("Listing des repertoires:",os.listdir(os.getcwd()))
-os.chdir(os.path.join(os.sep,os.getcwd(),'model_dir'))
+#os.chdir(os.path.join(os.sep,os.getcwd(),'model_dir'))
+os.chdir('model_dir')
 print("Listing des repertoires:",os.listdir(os.getcwd()))
 
 # Ajouter

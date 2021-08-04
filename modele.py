@@ -128,9 +128,4 @@ os.chdir('model_dir')
 pickle.dump(model, open('model.pkl', 'wb'))
 print("Le modèle est: ",os.listdir(os.getcwd()))
 
-# Ajouter
-#Information sur le répertoire courant
-#print ("Repertoire courant:",os.getcwd())
-#os.chdir(os.getcwd())
-#joblib.dump(model, os.getcwd())
-#print("Listing des repertoires:",os.listdir(os.getcwd()))
+

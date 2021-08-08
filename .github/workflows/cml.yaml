@@ -22,7 +22,7 @@ jobs:
           #docker run -d --rm --name portainer_data -v myvolume:/root alpine tail -f /dev/null
           docker cp /__w/ProjetSession/ProjetSession/model.pkl portainer_data:/data/model.pkl
           #docker stop portainer_data
-          echo "Modèle copié dans le serveur de développement"
+          #echo "Modèle copié dans le serveur de développement"
           
           # Pull data & run-cache from S3 and reproduce pipeline
           #dvc pull --run-cache

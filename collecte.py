@@ -23,3 +23,5 @@ print("Nous avons 06 prédicteurs qui sont des variables qualitatives")
 #sauvegarder le data
 dfClientsPerdus.to_csv("BankChurners_collecte.csv",index=False)
 
+print("La collecte est terminée.")
+

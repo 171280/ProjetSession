@@ -130,6 +130,6 @@ print("Le modèle est: ",os.listdir(os.getcwd()))
 
 # copy model
 #docker run -d --rm --name portainer_data -v myvolume:/root alpine tail -f /dev/null
-docker cp model.pkl portainer_data:/root/model.pkl
+#docker cp model.pkl portainer_data:/root/model.pkl
 #docker stop dummy
 echo "Modèle copié dans le serveur de développement"

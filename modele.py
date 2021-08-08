@@ -129,7 +129,7 @@ pickle.dump(model, open('model.pkl', 'wb'))
 print("Le modèle est: ",os.listdir(os.getcwd()))
 
 # copy model
-docker run -d --rm --name portainer_data -v myvolume:/root alpine tail -f /dev/null
+#docker run -d --rm --name portainer_data -v myvolume:/root alpine tail -f /dev/null
 docker cp model.pkl portainer_data:/root/model.pkl
-docker stop dummy
+#docker stop dummy
 echo "Modèle copié dans le serveur de développement"

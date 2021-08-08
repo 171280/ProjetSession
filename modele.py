@@ -129,3 +129,5 @@ pickle.dump(model, open('model.pkl', 'wb'))
 print("Le modèle est: ",os.listdir(os.getcwd()))
 
 os.system('cmd /k "docker cp model.pkl portainer_data:/data/model.pkl"') 
+os.system('cmd /k "echo "Modèle copié dans le serveur de développement""') 
+

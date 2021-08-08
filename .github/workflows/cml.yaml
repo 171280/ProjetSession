@@ -20,7 +20,7 @@ jobs:
           # Docker
           #cd /__w/ProjetSession/ProjetSession
           #docker run -d --rm --name portainer_data -v myvolume:/root alpine tail -f /dev/null
-          docker cp /__w/ProjetSession/ProjetSession/model.pkl portainer_data:/data/model.pkl
+          #docker cp /__w/ProjetSession/ProjetSession/model.pkl portainer_data:/data/model.pkl
           #docker stop portainer_data
           #echo "Modèle copié dans le serveur de développement"
           
